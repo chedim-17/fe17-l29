@@ -1,0 +1,24 @@
+.container__movieSelected {
+    display: flex;
+    border: 1px solid black;
+}
+
+.content__title {
+    margin: 8px;
+}
+
+.content__main {
+    width: 320px;
+    margin: 8px;
+}
+
+.item__movieSelected {
+    width: 300px;
+
+    text-align: end;
+}
+
+.item__description {
+    text-align: start;
+}
+

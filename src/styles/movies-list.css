@@ -1,0 +1,55 @@
+.movie__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container__item {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid;
+    margin: 10px;
+    width: 220px;
+    height: 310px;
+}
+
+.item__title {
+    width: 100%;
+    border: 1px solid #999;
+    padding: 4px;
+    font: bold 1rem serif;
+    cursor: pointer;
+}
+
+.item__title:hover {
+    color: red;
+}
+
+.wrapper {
+    width: 40px;
+    flex-grow: 1;
+    padding: 10px 4px;
+    /*border: 1px solid #999;*/
+}
+
+.item__likes {
+    margin: 16px 0;
+}
+
+.item__likes-button {
+    margin-bottom: 10px;
+}
+
+.item__movie {
+    width: 150px;
+    height: 210px;
+    margin: 10px;
+}
+
+.item__rating {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 100%;
+    /*border: 1px solid #999;*/
+}
