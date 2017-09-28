@@ -1,0 +1,26 @@
+.menu__list {
+    margin: 10px 0 5px;
+    padding: 25px 0 5px;
+    list-style: none;
+    text-align: center;
+}
+
+.list__item {
+    display: inline-block;
+    vertical-align:top;
+    color: #606060;
+}
+
+.item__link {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 20px;
+    margin: 0 34px 0 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: color .2s;
+    color: #aaa;
+}

@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 
-.item__title:hover {
+.item__title>a:hover {
     color: red;
 }
 

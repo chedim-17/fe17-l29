@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import '../../styles/content-search.css';
+import './content-search.css';
 
 class ContentSearch extends Component {
+
     render() {
         return (
 
