@@ -1,29 +1,20 @@
-import React, { Component } from 'react';
-import ContentSearch from '../components/content-search/content-search';
-import MoviesList from '../components/movies-list/movies-list';
+import React from 'react';
+import Filter from '../components/filter/filter';
 import MovieSelected from '../components/movie-selected/movie-selected';
 
-class Movies extends Component {
+const Movies = () => {
 
-    render() {
-
-        return (
-            <div className="App-main">
-                <div className="main-content">
-                    <ContentSearch />
-
-                    <div className="content-movies">
-                        <MoviesList />
-                    </div>
-                </div>
-
-                <div className="main-movie">
-                    <MovieSelected />
-                </div>
+    return (
+        <div className="App-main">
+            <div className="main-content">
+                <Filter />
             </div>
-        )
-    }
 
-}
+            <div className="main-movie">
+                <MovieSelected />
+            </div>
+        </div>
+    );
+};
 
 export default Movies;

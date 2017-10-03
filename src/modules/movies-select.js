@@ -1,6 +1,5 @@
 import React from 'react';
-import ContentSearch from '../components/content-search/content-search';
-import MoviesList from '../components/movies-list/movies-list';
+import Filter from '../components/filter/filter';
 import MovieSelected from '../components/movie-selected/movie-selected';
 
 const MoviesSelect = props => {
@@ -9,8 +8,7 @@ const MoviesSelect = props => {
     return (
         <div className="App-main">
             <div className="main-content">
-                <ContentSearch />
-                <MoviesList />
+                <Filter />
             </div>
 
             <div className="main-movie">
