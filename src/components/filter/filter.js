@@ -26,15 +26,15 @@ class Filter extends Component {
 
     filterList(e){
         this.setState({ name: e.target.value });
-        this.props.filterList(e);
+        this.props.filterList(e, this.props.movies);
     }
 
     sortByLikes() {
-        this.props.sortByLikes(this.props.movies.movies);
+        this.props.sortByLikes(this.props.movies);
     }
 
     sortByRating() {
-        this.props.sortByRating(this.props.movies.movies);
+        this.props.sortByRating(this.props.movies);
     }
 
     render() {
@@ -90,7 +90,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     fetchMovies: () => fetchMovies(),
-    filterList: (e) => filterList(e),
+    filterList: (e, movies) => filterList(e, movies),
     sortByLikes: (movies) => sortByLikes(movies),
     sortByRating: (movies) => sortByRating(movies),
 };

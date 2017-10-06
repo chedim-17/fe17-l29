@@ -7,8 +7,9 @@ import './movies-list.css';
 class MoviesList extends Component {
 
     render() {
+        // console.log('props', this.props);
         let moviesList = this.props.filter !== undefined ? this.props.filter : this.props.movies;
-        moviesList = moviesList.movies ? moviesList.movies : moviesList;
+        // moviesList = moviesList.movies ? moviesList.movies : moviesList;
 
         return (
             <div className="movie__container">

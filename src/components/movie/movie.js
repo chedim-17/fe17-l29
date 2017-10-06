@@ -1,9 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Stars from '../star-ratings/react-stars';
+import Button from '../../components/button/button';
 import './movie.css';
 
 class Movie extends Component {
+    constructor(props) {
+        super(props);
+
+        this.renderButtonForAdmin = this.renderButtonForAdmin.bind(this);
+
+    }
+
+    renderButtonForAdmin() {
+        const { selectedMovie } = this.props;
+        const roleAdmin = 'admin';
+
+        if (this.props.role === roleAdmin) {
+            return (
+                <div>
+                    <Button
+                        title="EDIT"
+                        className="edit-movie"
+                        linkTo="/create-movie"
+                        selectedMovie={selectedMovie}
+                    /><br/>
+                    <button className="delete-movie">DELETE</button>
+                </div>
+            )
+        }
+    }
+
     render() {
         const { selectedMovie } = this.props;
 
@@ -13,6 +40,7 @@ class Movie extends Component {
                     <div>{selectedMovie.title}</div>
                     <div><strong>Likes: </strong>{selectedMovie.likes}</div>
                     <div><Stars stars={selectedMovie.stars} /></div>
+                    {this.renderButtonForAdmin()}
                 </div>
                 <div className="content__main">
                     <img className="item__movieSelected"

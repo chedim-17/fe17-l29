@@ -1,21 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import  Reducers  from './reducers/reducers';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { HashRouter } from 'react-router-dom';
+import configureStore from './configure-store';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-const MoviesStore = createStore(Reducers);
+const MoviesStore = configureStore();
 
 ReactDOM.render(
     <Provider store={MoviesStore}>
         <div>
-            <HashRouter>
+            <BrowserRouter>
                 <App />
-            </HashRouter>
+            </BrowserRouter>
         </div>
     </Provider>
     , document.getElementById('root'));
