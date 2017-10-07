@@ -11,11 +11,11 @@
 }
 .create-movie__input input {
     height:20px;
-    width:220px;
+    width:700px;
     padding:5px 8px;
 }
 .create-movie__input textarea {
-    padding:8px; width:300px;
+    padding:8px; width:700px;
 }
 .create-movie__input button {
     margin-left:156px;

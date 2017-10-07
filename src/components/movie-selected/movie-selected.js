@@ -12,7 +12,8 @@ class MovieSelected extends Component {
         super(props);
 
         this.state = {
-            id: this.props.id
+            id: this.props.id,
+            selectedMovie: {}
         };
 
         this.addSelectedMovie = this.addSelectedMovie.bind(this);
@@ -20,8 +21,9 @@ class MovieSelected extends Component {
 
     }
 
-    componentDidMount() {
+    componentWillReceiveProps() {
         this.filterSelectedMovie();
+        console.log('this state in movieSelected', this.state);
         this.addSelectedMovie(this.state.selectedMovie);
     }
 

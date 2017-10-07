@@ -22,3 +22,14 @@
     text-align: start;
 }
 
+.button__movie {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    margin: 12px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    letter-spacing: 2px;
+    transition: color .2s;
+    color: #222;
+}
+

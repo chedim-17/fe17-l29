@@ -21,11 +21,15 @@ class Movie extends Component {
                 <div>
                     <Button
                         title="EDIT"
-                        className="edit-movie"
+                        className="button__movie"
                         linkTo="/create-movie"
                         selectedMovie={selectedMovie}
                     /><br/>
-                    <button className="delete-movie">DELETE</button>
+                    <Button
+                        title="DELETE"
+                        className="button__movie"
+
+                    />
                 </div>
             )
         }

@@ -9,14 +9,15 @@ import './create-movie.css';
 class CreateMovie extends Component {
     constructor(props) {
         super(props);
+        console.log('this.props in CreateMovie', this.props);
 
         this.state = {
-            title: this.props.title || this.props.selectedMovie.title,
-            imgUrl: this.props.imgUrl || '',
-            director: this.props.director || '',
-            actors: this.props.actors || '',
-            genres: this.props.genres || '',
-            description: this.props.description || '',
+            title: this.props.selectedMovie ? this.props.selectedMovie.title : '',
+            imgUrl: this.props.selectedMovie ? this.props.selectedMovie.posterUrl : '',
+            director: this.props.selectedMovie ? this.props.selectedMovie.director : '',
+            actors: this.props.selectedMovie ? this.props.selectedMovie.actors : '',
+            genres: this.props.selectedMovie ? this.props.selectedMovie.genres : '',
+            description: this.props.selectedMovie ? this.props.selectedMovie.description : '',
         };
 
         this.changeTitle = this.changeTitle.bind(this);

@@ -30,7 +30,7 @@ class Header extends Component {
             return (
                 <Button
                     title="CREATE MOVIE"
-                    className="create-movie"
+                    className="item__button"
                     linkTo="/create-movie"
                 />
             )
@@ -47,13 +47,15 @@ class Header extends Component {
                         <li className="list__item">
                             <Button title='USER'
                                     value="user"
+                                    className="item__button"
                                     clickHandler={this.handlerRole}
                             />
                         </li>
                         <li className="list__item">
                             <Button title='ADMIN'
-                                    clickHandler={this.handlerRole}
                                     value="admin"
+                                    className="item__button"
+                                    clickHandler={this.handlerRole}
                             />
                         </li>
                         <li className="list__item"><NavLink to="/" className="item__link">Home</NavLink></li>
@@ -79,5 +81,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-
-// export default Header;

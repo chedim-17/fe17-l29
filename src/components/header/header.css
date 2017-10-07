@@ -24,3 +24,13 @@
     transition: color .2s;
     color: #aaa;
 }
+
+.item__button {
+    display: inline-block;
+    position: relative;
+    margin: 0 6px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    letter-spacing: 2px;
+    transition: color .2s;
+    color: #777;
+}
