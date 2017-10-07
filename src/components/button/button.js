@@ -6,7 +6,7 @@ const ButtonLink = ({ title, linkTo, value,  clickHandler, className }) => {
     let result = null;
     result = linkTo ? (
             <Link to={linkTo}>
-                <button value={value} className={className}>{title}</button>
+                <button value={value} className={className} onClick={clickHandler}>{title}</button>
             </Link>
         ) : (
             <button value={value} onClick={clickHandler} className={className}>{title}</button>

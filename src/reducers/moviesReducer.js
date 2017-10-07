@@ -1,8 +1,8 @@
-import { ADD_MOVIES, CREATE_MOVIE, SELECTED_MOVIE } from '../actions/actions';
+import { ADD_MOVIES, CREATE_MOVIE, SELECTED_MOVIE, INDICATOR_CREATE_MOVIE } from '../actions/actions';
 
 const defaultState = {
     data: [],
-    newMovie: {},
+    newMovie: false,
     selectedMovie: {},
     selectByLikes: 'likes',
     selectByRating: 'rating'
@@ -15,11 +15,15 @@ const MoviesReducer = (state = defaultState, action) => {
         }
 
         case SELECTED_MOVIE: {
-            return {...state, ...action.payload}
+            return {...state, selectedMovie: action.payload.value}
         }
 
         case CREATE_MOVIE: {
             return {...state, newMovie: action.payload.newMovie}
+        }
+
+        case INDICATOR_CREATE_MOVIE: {
+            return {...state, newMovie: action.payload.value}
         }
 
         default:

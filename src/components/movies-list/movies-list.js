@@ -7,9 +7,9 @@ import './movies-list.css';
 class MoviesList extends Component {
 
     render() {
-        // console.log('props', this.props);
-        let moviesList = this.props.filter !== undefined ? this.props.filter : this.props.movies;
-        // moviesList = moviesList.movies ? moviesList.movies : moviesList;
+        let moviesList = this.props.filter !== undefined
+            ? this.props.filter
+            : this.props.movies;
 
         return (
             <div className="movie__container">
@@ -21,7 +21,7 @@ class MoviesList extends Component {
                                 <Link to={`/movies/${item.id}`} replace>{item.title}</Link>
                             </div>
                             <div className="item__likes wrapper">
-                                <CounterLikes likes={item.likes}/>
+                                <CounterLikes item={item}/>
                             </div>
                             <img className="item__movie"
                                  alt={item.title}
@@ -30,7 +30,10 @@ class MoviesList extends Component {
                                  src={item.posterUrl}
                             />
                             <div className="item__rating">
-                                <Stars stars={item.stars}/>
+                                <Stars
+                                    item={item}
+                                    stars={item.stars}
+                                />
 
                             </div>
                         </div>

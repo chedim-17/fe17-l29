@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getMovies, getSelectedMovie } from '../../reducers/moviesReducer';
+import { getMovies } from '../../reducers/moviesReducer';
 import { getChoiceRole } from '../../reducers/roleReducer';
 import { choiceOfRole, selectedMovie } from '../../actions/actions';
 import Movie from '../movie/movie';
@@ -13,7 +13,7 @@ class MovieSelected extends Component {
 
         this.state = {
             id: this.props.id,
-            selectedMovie: {}
+            selectedMovie: this.props.movies[0]
         };
 
         this.addSelectedMovie = this.addSelectedMovie.bind(this);
@@ -23,7 +23,6 @@ class MovieSelected extends Component {
 
     componentWillReceiveProps() {
         this.filterSelectedMovie();
-        console.log('this state in movieSelected', this.state);
         this.addSelectedMovie(this.state.selectedMovie);
     }
 
@@ -33,17 +32,20 @@ class MovieSelected extends Component {
 
     filterSelectedMovie() {
         const { id, movies } = this.props;
-        const selectedMovie = movies.length > 0 ?
-            movies.filter(item => item.id === id)[0] :
-            null;
-        this.setState({ selectedMovie });
+        const selMovie = movies.length > 0
+            ? movies.filter(item => item.id === id)[0]
+            : null;
+
+        this.setState(() => ({
+            selectedMovie: selMovie
+        }))
     }
 
     render() {
         const { id, movies, role } = this.props;
-        const selectedMovie = movies.length > 0 ?
-            movies.filter(item => item.id === id)[0] :
-            null;
+        const selectedMovie = movies.length > 0
+            ? movies.filter(item => item.id === id)[0]
+            : null;
 
         if (movies.length > 0) {
             return (
@@ -71,7 +73,6 @@ MovieSelected.propTypes = {
 const mapStateToProps = state => ({
     movies: getMovies(state),
     role: getChoiceRole(state),
-    selectedMovie: getSelectedMovie(state),
 });
 
 const mapDispatchToProps = {

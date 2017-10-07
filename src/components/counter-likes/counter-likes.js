@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateMovie } from '../../actions/actions';
 import like from '../../img/like16.png';
 import dislike from '../../img/dislike16.png';
 import './counter-likes.css';
@@ -8,23 +10,32 @@ class CounterLikes extends Component {
         super(props);
 
         this.state = {
-            count: this.props.likes
+            movie: this.props.item,
+            likes: this.props.item.likes
         };
 
         this.incrementCount = this.incrementCount.bind(this);
         this.decrementCount = this.decrementCount.bind(this);
+        this.handleChangeCountLikes = this.handleChangeCountLikes.bind(this);
     }
 
     incrementCount() {
-        this.setState({
-            count: this.state.count + 1
-        })
+        this.setState((prevState) => ({
+            likes: prevState.likes + 1
+        }));
+        this.handleChangeCountLikes();
     }
 
     decrementCount() {
-        this.setState({
-            count: this.state.count - 1
-        })
+        this.setState((prevState) => ({
+            likes: prevState.likes - 1
+        }));
+        this.handleChangeCountLikes();
+    }
+
+    handleChangeCountLikes() {
+        const data = {...this.state.movie, likes: this.state.likes};
+        this.props.updateMovie(data, this.state.movie.id);
     }
 
     render() {
@@ -32,17 +43,35 @@ class CounterLikes extends Component {
         return (
             <div>
                 <div className="item__likes item__icon">
-                    <img src={like} className="item__likes-like" alt="like" onClick={this.incrementCount}/>
+                    <img
+                        src={like}
+                        className="item__likes-like"
+                        alt="like"
+                        onClick={this.incrementCount}
+                    />
                 </div>
                 <div className="item__dislikes item__icon">
-                    <img src={dislike} className="item__likes-dislike" alt="dislike" onClick={this.decrementCount}/>
+                    <img
+                        src={dislike}
+                        className="item__likes-dislike"
+                        alt="dislike"
+                        onClick={this.decrementCount}
+                    />
                 </div>
                 <div>likes</div>
-                <div>{this.state.count}</div>
+                <div>{this.state.likes}</div>
             </div>
         )
     }
 
 }
 
-export default CounterLikes;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = {
+    updateMovie: (data, id) => updateMovie(data, id),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterLikes);

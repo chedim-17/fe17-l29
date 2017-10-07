@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteMovie, selectedMovie } from '../../actions/actions';
 import Stars from '../star-ratings/react-stars';
 import Button from '../../components/button/button';
 import './movie.css';
@@ -9,12 +11,19 @@ class Movie extends Component {
         super(props);
 
         this.renderButtonForAdmin = this.renderButtonForAdmin.bind(this);
+        this.handlerButtonDelete = this.handlerButtonDelete.bind(this);
 
+    }
+
+    handlerButtonDelete() {
+        this.props.deleteMovie(this.props.selectedMovie.id);
     }
 
     renderButtonForAdmin() {
         const { selectedMovie } = this.props;
         const roleAdmin = 'admin';
+
+        this.props.selMovie(selectedMovie);
 
         if (this.props.role === roleAdmin) {
             return (
@@ -28,7 +37,7 @@ class Movie extends Component {
                     <Button
                         title="DELETE"
                         className="button__movie"
-
+                        clickHandler={this.handlerButtonDelete}
                     />
                 </div>
             )
@@ -43,7 +52,11 @@ class Movie extends Component {
                 <div className="content__title">
                     <div>{selectedMovie.title}</div>
                     <div><strong>Likes: </strong>{selectedMovie.likes}</div>
-                    <div><Stars stars={selectedMovie.stars} /></div>
+                    <div>
+                        <Stars
+                            item={selectedMovie}
+                            stars={selectedMovie.stars} />
+                    </div>
                     {this.renderButtonForAdmin()}
                 </div>
                 <div className="content__main">
@@ -74,4 +87,13 @@ Movie.propTypes = {
     selectedMovie: PropTypes.object
 };
 
-export default Movie;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = {
+    deleteMovie: (id) => deleteMovie(id),
+    selMovie: value => selectedMovie(value),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie);

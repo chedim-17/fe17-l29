@@ -2,35 +2,37 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getChoiceRole } from '../../reducers/roleReducer';
-import { choiceOfRole } from '../../actions/actions';
+import { choiceOfRole, indicatorCreateMovie } from '../../actions/actions';
 import logo from '../.././logo.svg';
 import Button from '../../components/button/button';
 import './header.css';
 
-
-
-// const Header = () => {
 class Header extends Component {
     constructor(props) {
         super(props);
 
         this.handlerRole = this.handlerRole.bind(this);
         this.renderCreateButton = this.renderCreateButton.bind(this);
+        this.handlerButtonCreateMovie = this.handlerButtonCreateMovie.bind(this);
     }
 
     handlerRole(e) {
         this.props.choiceOfRole(e.target.value);
     }
 
+    handlerButtonCreateMovie() {
+        this.props.indicatorCreateMovie(true);
+    }
+
     renderCreateButton() {
         const roleAdmin = 'admin';
-        console.log('this.props', this.props);
 
         if (this.props.role === roleAdmin) {
             return (
                 <Button
                     title="CREATE MOVIE"
                     className="item__button"
+                    clickHandler={this.handlerButtonCreateMovie}
                     linkTo="/create-movie"
                 />
             )
@@ -78,6 +80,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     choiceOfRole: value => choiceOfRole(value),
+    indicatorCreateMovie: value => indicatorCreateMovie(value)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

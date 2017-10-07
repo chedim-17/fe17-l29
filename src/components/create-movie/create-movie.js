@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createMovie } from '../../actions/actions';
+import { createMovie, updateMovie, indicatorCreateMovie } from '../../actions/actions';
 import { getNewMovie, getSelectedMovie } from '../../reducers/moviesReducer';
 import Button from '../../components/button/button';
 
@@ -9,24 +9,28 @@ import './create-movie.css';
 class CreateMovie extends Component {
     constructor(props) {
         super(props);
-        console.log('this.props in CreateMovie', this.props);
 
         this.state = {
-            title: this.props.selectedMovie ? this.props.selectedMovie.title : '',
-            imgUrl: this.props.selectedMovie ? this.props.selectedMovie.posterUrl : '',
-            director: this.props.selectedMovie ? this.props.selectedMovie.director : '',
-            actors: this.props.selectedMovie ? this.props.selectedMovie.actors : '',
-            genres: this.props.selectedMovie ? this.props.selectedMovie.genres : '',
-            description: this.props.selectedMovie ? this.props.selectedMovie.description : '',
+            title: !this.props.newMovie ? this.props.selectedMovie.title : '',
+            posterUrl: !this.props.newMovie ? this.props.selectedMovie.posterUrl : '',
+            likes: !this.props.newMovie ? this.props.selectedMovie.likes : '',
+            stars: !this.props.newMovie ? this.props.selectedMovie.stars : '',
+            director: !this.props.newMovie ? this.props.selectedMovie.director : '',
+            actors: !this.props.newMovie ? this.props.selectedMovie.actors : [],
+            genres: !this.props.newMovie ? this.props.selectedMovie.genres : [],
+            description: !this.props.newMovie ? this.props.selectedMovie.description : '',
         };
 
         this.changeTitle = this.changeTitle.bind(this);
         this.changeImgUrl = this.changeImgUrl.bind(this);
+        this.changeLikes = this.changeLikes.bind(this);
+        this.changeStars = this.changeStars.bind(this);
         this.changeDirector = this.changeDirector.bind(this);
         this.changeActors = this.changeActors.bind(this);
         this.changeGenres = this.changeGenres.bind(this);
         this.changeDescription = this.changeDescription.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeIndicatorCreateMovie = this.changeIndicatorCreateMovie.bind(this);
     }
 
     changeTitle(e) {
@@ -34,7 +38,15 @@ class CreateMovie extends Component {
     }
 
     changeImgUrl(e) {
-        this.setState({ imgUrl: e.target.value })
+        this.setState({ posterUrl: e.target.value })
+    }
+
+    changeLikes(e) {
+        this.setState({ likes: e.target.value })
+    }
+
+    changeStars(e) {
+        this.setState({ stars: e.target.value })
     }
 
     changeDirector(e) {
@@ -42,11 +54,11 @@ class CreateMovie extends Component {
     }
 
     changeActors(e) {
-        this.setState({ actors: e.target.value })
+        this.setState({ actors: e.target.value.split(',') })
     }
 
     changeGenres(e) {
-        this.setState({ genres: e.target.value })
+        this.setState({ genres: e.target.value.split(',') })
     }
 
     changeDescription(e) {
@@ -55,15 +67,18 @@ class CreateMovie extends Component {
 
     handleSubmit() {
         const data = this.state;
-        console.log('data', data);
-        this.props.createMovie(data);
+        this.props.indicatorCreateMovie(false);
+        this.props.newMovie
+        ? this.props.createMovie(data)
+        : this.props.updateMovie(data, this.props.selectedMovie.id);
+
+    }
+
+    changeIndicatorCreateMovie() {
+        this.props.indicatorCreateMovie(false);
     }
 
     render() {
-        const movies = '/movies';
-        const submit = 'Submit';
-        const goMovies = 'Go movies';
-        console.log('props in create-movie', this.props);
 
         return (
             <div className="create-movie">
@@ -79,8 +94,24 @@ class CreateMovie extends Component {
                     <span>Img url</span>
                     <input
                         type="text"
-                        value={this.state.imgUrl}
+                        value={this.state.posterUrl}
                         onChange={this.changeImgUrl}
+                    />
+                </div>
+                <div className="create-movie__input">
+                    <span>Likes</span>
+                    <input
+                        type="text"
+                        value={this.state.likes}
+                        onChange={this.changeLikes}
+                    />
+                </div>
+                <div className="create-movie__input">
+                    <span>Stars</span>
+                    <input
+                        type="text"
+                        value={this.state.stars}
+                        onChange={this.changeStars}
                     />
                 </div>
                 <div className="create-movie__input">
@@ -117,14 +148,15 @@ class CreateMovie extends Component {
                     />
                 </div>
                 <Button
-                    title={submit}
+                    title="Submit"
                     className="create-movie__button"
                     clickHandler={this.handleSubmit}
                 />
                 <Button
-                    title={goMovies}
+                    title="Go movies"
                     className="create-movie__button"
-                    linkTo={movies}
+                    clickHandler={this.changeIndicatorCreateMovie}
+                    linkTo="/movies"
                 />
 
             </div>
@@ -143,6 +175,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     createMovie: data => createMovie(data),
+    updateMovie: (data, id) => updateMovie(data, id),
+    indicatorCreateMovie: value => indicatorCreateMovie(value),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateMovie);

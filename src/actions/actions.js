@@ -3,7 +3,10 @@ import axios from 'axios';
 export const ADD_MOVIES = 'ADD_MOVIES';
 export const FILTER_CHANGED = 'FILTER_CHANGED';
 export const CHOICE_ROLE = 'CHOICE_ROLE';
+export const INDICATOR_CREATE_MOVIE = 'INDICATOR_CREATE_MOVIE';
 export const CREATE_MOVIE = 'CREATE_MOVIE';
+export const UPDATE_MOVIE = 'UPDATE_MOVIE';
+export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const SELECTED_MOVIE = 'SELECTED_MOVIE';
 
 const api = 'http://localhost:3001/movies';
@@ -20,7 +23,7 @@ export const fetchMovies = () => {
 
 export const createMovie  = (data) => {
     return (dispatch) => {
-        return axios.post(`${api}/1`, data, {
+        return axios.post(`${api}`, data, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -72,12 +75,43 @@ export const choiceOfRole = (value) => {
     }
 };
 
-export const selectedMovie = (selectedMovie) => {
+export const indicatorCreateMovie = (value) => {
     return {
-        type: SELECTED_MOVIE,
-        payload: { selectedMovie }
+        type: INDICATOR_CREATE_MOVIE,
+        payload: { value }
     }
 };
+
+export const selectedMovie = (value) => {
+    return {
+        type: SELECTED_MOVIE,
+        payload: { value }
+    }
+};
+
+export const updateMovie = (data, id) => {
+    return (dispatch) => {
+        return axios.put(`http://localhost:3001/movies/${id}`, data)
+            .then(response => dispatch(_updateMovie(response)))
+    };
+};
+
+const _updateMovie = payload => ({
+    type: UPDATE_MOVIE,
+    payload,
+});
+
+export const deleteMovie = (id) => {
+    return (dispatch) => {
+        return axios.delete(`http://localhost:3001/movies/${id}`)
+            .then(response => dispatch(_deleteMovie(response)))
+    };
+};
+
+const _deleteMovie = payload => ({
+    type: DELETE_MOVIE,
+    payload,
+});
 
 const _createMovie = payload  => {
     return {
