@@ -1,16 +1,13 @@
-import { ADD_MOVIES, CREATE_MOVIE, SELECTED_MOVIE, INDICATOR_CREATE_MOVIE } from '../actions/actions';
+import { FETCH_MOVIES, ADD_MOVIE, SELECTED_MOVIE } from '../actions/movieActions';
 
 const defaultState = {
     data: [],
-    newMovie: false,
     selectedMovie: {},
-    selectByLikes: 'likes',
-    selectByRating: 'rating'
 };
 
 const MoviesReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case ADD_MOVIES: {
+        case FETCH_MOVIES: {
             return {...state, data: action.payload.data}
         }
 
@@ -18,12 +15,8 @@ const MoviesReducer = (state = defaultState, action) => {
             return {...state, selectedMovie: action.payload.value}
         }
 
-        case CREATE_MOVIE: {
+        case ADD_MOVIE: {
             return {...state, newMovie: action.payload.newMovie}
-        }
-
-        case INDICATOR_CREATE_MOVIE: {
-            return {...state, newMovie: action.payload.value}
         }
 
         default:
@@ -32,7 +25,6 @@ const MoviesReducer = (state = defaultState, action) => {
 };
 
 export const getMovies = state => state.movies.data;
-export const getNewMovie = state => state.movies.newMovie;
 export const getSelectedMovie = state => state.movies.selectedMovie;
 
 export default MoviesReducer;

@@ -1,6 +1,6 @@
 import React from 'react';
-import Filter from '../components/filter/filter';
-import MovieSelected from '../components/movie-selected/movie-selected';
+import Filter from '../../modules/filter/filter';
+import MovieSelected from '../../modules/movie-selected/movie-selected';
 
 const Movies = () => {
 

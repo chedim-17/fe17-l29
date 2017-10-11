@@ -2,9 +2,10 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import Home from '../components/home/home';
 import About from '../components/about/about';
-import Movies from '../modules/movies';
-import MoviesSelect from '../modules/movies-select';
-import CreateMovie from '../components/create-movie/create-movie';
+import Movies from '../components/movies/movies';
+import MoviesSelect from '../components/movies-select/movies-select';
+import EditMovie from '../modules/edit-movie/edit-movie';
+import AddMovie from '../modules/add-movie/add-movie';
 
 const Main = (props) => (
     <main>
@@ -13,7 +14,8 @@ const Main = (props) => (
             <Route exact path='/movies' component={Movies}/>
             <Route path='/movies/:movieId' component={MoviesSelect}/>
             <Route path='/about' component={About}/>
-            <Route path='/create-movie' component={CreateMovie}/>
+            <Route path='/edit-movie' component={EditMovie}/>
+            <Route path='/add-movie' component={AddMovie}/>
         </Switch>
     </main>
 );

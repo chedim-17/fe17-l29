@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactStars from 'react-stars';
-import { updateMovie } from '../../actions/actions';
+import { updateMovie } from '../../actions/movieActions';
 
 class Stars extends Component {
     constructor(props) {
@@ -18,7 +18,6 @@ class Stars extends Component {
     }
 
     ratingChanged = (newRating) => {
-        // console.log(newRating);
         this.setState(() => ({
             starsNew: newRating
         }));

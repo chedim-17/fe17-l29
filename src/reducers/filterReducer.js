@@ -1,4 +1,4 @@
-import { FILTER_CHANGED } from '../actions/actions';
+import { FILTER_CHANGED } from '../actions/filterActions';
 
 const defaultState = {field: '', order: ''};
 

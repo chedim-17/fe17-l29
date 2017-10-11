@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MoviesList from '../movies-list/movies-list';
-import { fetchMovies, filterList, sortByLikes, sortByRating } from '../../actions/actions';
+import MoviesList from '../../components/movies-list/movies-list';
+import { fetchMovies } from '../../actions/movieActions';
+import { filterList, sortByLikes, sortByRating } from '../../reducers/selectors';
 import { getMovies } from '../../reducers/moviesReducer';
 import { getFilterList } from '../../reducers/filterReducer';
 import './filter.css';

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMovies } from '../../reducers/moviesReducer';
 import { getChoiceRole } from '../../reducers/roleReducer';
-import { choiceOfRole, selectedMovie } from '../../actions/actions';
+import { selectedMovie } from '../../actions/movieActions';
+import { choiceOfRole } from '../../actions/roleActions';
 import Movie from '../movie/movie';
 import './movie-selected.css';
 
@@ -13,7 +14,7 @@ class MovieSelected extends Component {
 
         this.state = {
             id: this.props.id,
-            selectedMovie: this.props.movies[0]
+            selectedMovie: this.props.selectedMovie || this.props.movies[0]
         };
 
         this.addSelectedMovie = this.addSelectedMovie.bind(this);

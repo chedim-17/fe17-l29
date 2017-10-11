@@ -1,4 +1,4 @@
-import { CHOICE_ROLE } from '../actions/actions';
+import { CHOICE_ROLE } from '../actions/roleActions';
 
 const defaultState = {role: ''};
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateMovie } from '../../actions/actions';
+import { updateMovie } from '../../actions/movieActions';
 import like from '../../img/like16.png';
 import dislike from '../../img/dislike16.png';
 import './counter-likes.css';
@@ -20,17 +20,19 @@ class CounterLikes extends Component {
     }
 
     incrementCount() {
-        this.setState((prevState) => ({
+        this.setState(prevState => ({
             likes: prevState.likes + 1
         }));
-        this.handleChangeCountLikes();
     }
 
     decrementCount() {
-        this.setState((prevState) => ({
+        this.setState(prevState => ({
             likes: prevState.likes - 1
         }));
-        this.handleChangeCountLikes();
+    }
+
+    componentDidUpdate() {
+        this.handleChangeCountLikes()
     }
 
     handleChangeCountLikes() {

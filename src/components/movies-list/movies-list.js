@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import CounterLikes from '../counter-likes/counter-likes';
-import Stars from '../star-ratings/react-stars';
+import CounterLikes from '../../modules/counter-likes/counter-likes';
+import Stars from '../../modules/star-ratings/react-stars';
 import './movies-list.css';
 
 class MoviesList extends Component {

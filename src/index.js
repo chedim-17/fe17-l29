@@ -19,6 +19,4 @@ ReactDOM.render(
     </Provider>
     , document.getElementById('root'));
 
-// MoviesStore.subscribe(() => console.log('Store: ', MoviesStore.getState()));
-
 registerServiceWorker();

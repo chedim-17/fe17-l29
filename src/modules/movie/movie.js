@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteMovie, selectedMovie } from '../../actions/actions';
+import { deleteMovie, selectedMovie, fetchMovies } from '../../actions/movieActions';
 import Stars from '../star-ratings/react-stars';
 import Button from '../../components/button/button';
 import './movie.css';
@@ -17,6 +17,7 @@ class Movie extends Component {
 
     handlerButtonDelete() {
         this.props.deleteMovie(this.props.selectedMovie.id);
+        this.props.fetchMovies();
     }
 
     renderButtonForAdmin() {
@@ -31,7 +32,7 @@ class Movie extends Component {
                     <Button
                         title="EDIT"
                         className="button__movie"
-                        linkTo="/create-movie"
+                        linkTo="/edit-movie"
                         selectedMovie={selectedMovie}
                     /><br/>
                     <Button
@@ -94,6 +95,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
     deleteMovie: (id) => deleteMovie(id),
     selMovie: value => selectedMovie(value),
+    fetchMovies: () => fetchMovies(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

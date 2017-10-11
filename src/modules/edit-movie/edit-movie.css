@@ -1,0 +1,26 @@
+.edit-movie__input {
+    margin: 16px;
+}
+
+.edit-movie__input span {
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+.edit-movie__input input {
+    height:20px;
+    width:700px;
+    padding:5px 8px;
+}
+.edit-movie__input textarea {
+    padding:8px; width:700px;
+}
+.edit-movie__input button {
+    margin-left:156px;
+}
+
+.edit-movie__button {
+    margin: 10px 12px 20px 156px;
+}
