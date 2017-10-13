@@ -144,7 +144,6 @@ class AddMovie extends Component {
                 <Button
                     title="Go movies"
                     className="add-movie__button"
-                    clickHandler={this.changeIndicatorCreateMovie}
                     linkTo="/movies"
                 />
             </div>

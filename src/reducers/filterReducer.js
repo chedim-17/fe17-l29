@@ -1,6 +1,6 @@
 import { FILTER_CHANGED } from '../actions/filterActions';
 
-const defaultState = {field: '', order: ''};
+const defaultState = { data: [] };
 
 export default (state = defaultState, action) => {
     switch (action.type) {

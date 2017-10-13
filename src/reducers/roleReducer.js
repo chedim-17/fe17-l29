@@ -1,6 +1,6 @@
 import { CHOICE_ROLE } from '../actions/roleActions';
 
-const defaultState = {role: ''};
+const defaultState = { role: '' };
 
 export default (state = defaultState, action) => {
     switch (action.type) {
