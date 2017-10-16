@@ -146,7 +146,7 @@ class EditMovie extends Component {
                 <Button
                     title="Go movies"
                     className="edit-movie__button"
-                    linkTo="/movies"
+                    linkTo={`/movies/${this.props.selectedMovie.id}`}
                 />
 
             </div>

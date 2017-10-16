@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addMovie } from '../../actions/movieActions';
+import { getSelectedMovie } from '../../reducers/moviesReducer';
 import Button from '../../components/button/button';
 import './add-movie.css';
 
@@ -18,6 +19,7 @@ class AddMovie extends Component {
             genres: [],
             description: '',
         };
+        console.log('props!!!', this.props);
 
         this.changeTitle = this.changeTitle.bind(this);
         this.changeImgUrl = this.changeImgUrl.bind(this);
@@ -144,7 +146,7 @@ class AddMovie extends Component {
                 <Button
                     title="Go movies"
                     className="add-movie__button"
-                    linkTo="/movies"
+                    linkTo={`/movies/${this.props.selMovie.id}`}
                 />
             </div>
         )
@@ -156,7 +158,7 @@ AddMovie.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-
+    selMovie: getSelectedMovie(state),
 });
 
 const mapDispatchToProps = {

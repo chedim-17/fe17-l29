@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const ButtonLink = ({ title, linkTo, value,  clickHandler, className }) => {
@@ -16,15 +15,12 @@ const ButtonLink = ({ title, linkTo, value,  clickHandler, className }) => {
 
 ButtonLink.propTypes = {
     title: PropTypes.string,
-    // color: PropTypes.string,
     linkTo: PropTypes.string,
     clickHandler: PropTypes.func
 };
 
 ButtonLink.defaultProps = {
     title: 'button',
-    // color: '#066',
-    // background: '#666',
     linkTo: '',
     clickHandler: () => {}
 };
