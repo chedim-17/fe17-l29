@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteMovie, selectedMovie, fetchMovies } from '../../actions/movieActions';
-import Stars from '../star-ratings/react-stars';
-import Button from '../../components/button/button';
+import { deleteMovie, selectedMovie, fetchMovies } from '../movieActions';
+import Stars from '../../star-ratings/react-stars';
+import Button from '../../../components/button/button';
 import './movie.css';
 
 class Movie extends Component {

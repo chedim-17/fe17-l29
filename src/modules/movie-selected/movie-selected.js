@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getMovies } from '../../reducers/moviesReducer';
-import { getChoiceRole } from '../../reducers/roleReducer';
-import { selectedMovie } from '../../actions/movieActions';
-import { choiceOfRole } from '../../actions/roleActions';
-import Movie from '../movie/movie';
+import { getMovies } from './moviesReducer';
+import { getChoiceRole } from '../header/roleReducer';
+import { selectedMovie } from './movieActions';
+import { choiceOfRole } from '../header/roleActions';
+import Movie from './movie/movie';
 import './movie-selected.css';
 
 class MovieSelected extends Component {

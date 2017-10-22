@@ -4,8 +4,8 @@ import Home from '../components/home/home';
 import About from '../components/about/about';
 import Movies from '../components/movies/movies';
 import MoviesSelect from '../components/movies-select/movies-select';
-import EditMovie from '../modules/edit-movie/edit-movie';
-import AddMovie from '../modules/add-movie/add-movie';
+import EditMovie from '../modules/movie-selected/edit-movie/edit-movie';
+import AddMovie from '../modules/header/add-movie/add-movie';
 
 const Main = (props) => (
     <main>

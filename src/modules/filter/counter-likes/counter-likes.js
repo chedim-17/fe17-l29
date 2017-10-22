@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateMovie } from '../../actions/movieActions';
-import like from '../../img/like16.png';
-import dislike from '../../img/dislike16.png';
+import { updateMovie } from '../../movie-selected/movieActions';
+import like from '../../../img/like16.png';
+import dislike from '../../../img/dislike16.png';
 import './counter-likes.css';
 
 class CounterLikes extends Component {

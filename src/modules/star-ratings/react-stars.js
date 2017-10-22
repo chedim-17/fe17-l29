@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactStars from 'react-stars';
-import { updateMovie } from '../../actions/movieActions';
+import { updateMovie } from '../movie-selected/movieActions';
 
 class Stars extends Component {
     constructor(props) {

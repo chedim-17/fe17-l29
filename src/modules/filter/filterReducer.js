@@ -1,4 +1,4 @@
-import { FILTER_CHANGED } from '../actions/filterActions';
+import { FILTER_CHANGED } from './filterActions';
 
 const defaultState = { data: [] };
 

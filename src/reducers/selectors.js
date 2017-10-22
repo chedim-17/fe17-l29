@@ -1,4 +1,4 @@
-import { filterChanged } from '../actions/filterActions';
+import { filterChanged } from '../modules/filter/filterActions';
 
 export const filterList = (e, movies) => {
     let filteredList = [].concat(movies)

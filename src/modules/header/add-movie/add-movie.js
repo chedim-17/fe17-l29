@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMovie } from '../../actions/movieActions';
-import { getSelectedMovie } from '../../reducers/moviesReducer';
-import Button from '../../components/button/button';
+import { addMovie } from '../../movie-selected/movieActions';
+import { getSelectedMovie } from '../../movie-selected/moviesReducer';
+import Button from '../../../components/button/button';
 import './add-movie.css';
 
 class AddMovie extends Component {

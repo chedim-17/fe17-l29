@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getChoiceRole } from '../../reducers/roleReducer';
-import { choiceOfRole } from '../../actions/roleActions';
+import { getChoiceRole } from './roleReducer';
+import { choiceOfRole } from './roleActions';
 import logo from '../.././logo.svg';
 import Button from '../../components/button/button';
 import './header.css';

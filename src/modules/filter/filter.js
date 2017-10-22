@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MoviesList from '../../components/movies-list/movies-list';
-import { fetchMovies } from '../../actions/movieActions';
+import MoviesList from './component/movies-list/movies-list';
+import { fetchMovies } from '../movie-selected/movieActions';
 import { filterList, sortByLikes, sortByRating } from '../../reducers/selectors';
-import { getMovies } from '../../reducers/moviesReducer';
-import { getFilterList } from '../../reducers/filterReducer';
+import { getMovies } from '../movie-selected/moviesReducer';
+import { getFilterList } from './filterReducer';
 import './filter.css';
 
 class Filter extends Component {

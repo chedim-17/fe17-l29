@@ -1,4 +1,4 @@
-import { FETCH_MOVIES, ADD_MOVIE, SELECTED_MOVIE } from '../actions/movieActions';
+import { FETCH_MOVIES, ADD_MOVIE, SELECTED_MOVIE } from './movieActions';
 
 const defaultState = {
     data: [],
